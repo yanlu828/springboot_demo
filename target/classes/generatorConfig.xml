@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <classPathEntry location="C:/Users/Administrator/.m2/repository/mysql/mysql-connector-java/5.1.38/mysql-connector-java-5.1.38.jar" />
+
+    <context id="MysqlContext" targetRuntime="MyBatis3" defaultModelType="flat">
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
+        <!-- JavaBean 实现 序列化 接口 -->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+
+        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin" />
+
+        <commentGenerator>
+            <property name="suppressAllComments" value="false" />
+            <property name="suppressDate" value="false" />
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/qiuqiu"
+                        userId="root"
+                        password="123456">
+        </jdbcConnection>
+
+        <javaModelGenerator targetPackage="com.silverdawn.domain" targetProject="src\main\java">
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="mapper"  targetProject="src\main\resources\mybatis\mapper"/>
+
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.silverdawn.dao"  targetProject="src\main\java"/>
+
+        <table tableName="USER" domainObjectName="User"
+               enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true"
+               selectByExampleQueryId="true"></table>
+    </context>
+</generatorConfiguration>
